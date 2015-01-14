@@ -4,6 +4,22 @@
 const
   IncludeRevision = 98;
 
+
+
+ {$loadlib prosocks}
+function GetGithubPage(Url: string): string;
+var
+  S: SSLSocket;
+  res: ProMemoryStruct;
+begin
+  Pro_InitSocket(S, nil, nil, nil, nil);
+  Pro_CreateSocket(S, '');
+  Pro_SetSSL(S, false, false, true);
+  Pro_SetURL(S, URL);
+  Pro_DoGetEx(S, res);
+  Result := res.memory;
+end;
+
 (*
 CreateNewFiles
 ~~~~~~~~~~~~~~~~~~~~
@@ -28,7 +44,7 @@ var
   Multi, Multi2: TStringArray;
   Toggle: Boolean;
 begin
-  NewFileName:= GetPage('http://osrreflection.googlecode.com/git/Files.txt');
+  NewFileName:= GetGithubPage('https://raw.githubusercontent.com/Elfyyy/OSR-Reflection-PascalScript/master/Files.txt');
   Multi:= MultiBetween(NewFileName, '(', ')');
   for i:= 0 to high(Multi) do
   begin
@@ -89,7 +105,7 @@ var
   i: Integer;
   Multi: TStringArray;
 begin
-  OldFileName:= GetPage('http://osrreflection.googlecode.com/git/RemovedFiles.txt');
+  OldFileName:= GetGithubPage('https://raw.githubusercontent.com/Elfyyy/OSR-Reflection-PascalScript/master/RemovedFiles.txt');
   Multi:= MultiBetween(OldFileName, '(', ')');
   for i:= 0 to high(Multi) do
   begin
@@ -158,7 +174,7 @@ var
 begin
   CreateNewFiles;
   DeleteOldFiles;
-  OnlineVersion := GetPage('http://osrreflection.googlecode.com/git/Current%20Rev.txt');
+  OnlineVersion := GetGithubPage('https://raw.githubusercontent.com/Elfyyy/OSR-Reflection-PascalScript/master/Current%20Rev.txt');
   if (trim(OnlineVersion) > ReflectionRevision) then
   begin
     writeLn('Hook update available!');
@@ -166,7 +182,7 @@ begin
     try
       NewFileName := includePath + 'SRL-OSR\SRL\Reflection\Core\' + 'Hooks.simba';
       NewFile := Rewritefile(NewFileName, true);
-      WriteFileString(NewFile, GetPage('http://osrreflection.googlecode.com/git/Core/Hooks.simba'));
+      WriteFileString(NewFile, GetGithubPage('https://raw.githubusercontent.com/Elfyyy/OSR-Reflection-PascalScript/master/Core/Hooks.simba'));
       writeLn('Successfully updated '+NewFileName);
     except
       begin
@@ -180,12 +196,12 @@ begin
       TerminateScript;
     end;
   end else
-  OnlineVersion := GetPage('http://osrreflection.googlecode.com/git/Include%20Rev.txt');
+  OnlineVersion := GetGithubPage('https://raw.githubusercontent.com/Elfyyy/OSR-Reflection-PascalScript/master/Include%20Rev.txt');
   if (StrToInt(OnlineVersion) > IncludeRevision) then
   begin
     writeLn('Reflection update available!');
     writeLn('Auto-Updating to Version #' + OnlineVersion);
-    NewFileName:= GetPage('http://osrreflection.googlecode.com/git/Files.txt');
+    NewFileName:= GetGithubPage('https://raw.githubusercontent.com/Elfyyy/OSR-Reflection-PascalScript/master/Files.txt');
     Multi:= MultiBetween(NewFileName, '(', ')');
     for i:= 0 to high(Multi) do
     begin
@@ -214,7 +230,7 @@ begin
     try
       NewFileName := includePath + 'SRL-OSR\SRL\Reflection\Reflection.simba';
       NewFile := Rewritefile(NewFileName, true);
-      WriteFileString(NewFile, GetPage('http://osrreflection.googlecode.com/git/Reflection.Simba'));
+      WriteFileString(NewFile, GetGithubPage('https://raw.githubusercontent.com/Elfyyy/OSR-Reflection-PascalScript/master/Reflection.Simba'));
       writeLn('Successfully updated '+NewFileName);
     except
       begin
