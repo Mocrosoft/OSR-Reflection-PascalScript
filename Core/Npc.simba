@@ -484,7 +484,7 @@ var
   Local, InteractingIndex: Integer;
   Temp: TNPC;
 begin
-  Local := SmartGetFieldObject(SmartCurrentTarget, 0, Client_GetLocalPlayer);
+  Local := SmartGetFieldObject(SmartCurrentTarget, 0, Client_LocalPlayer);
   InteractingIndex := SmartGetFieldInt(SmartCurrentTarget, Local, Actor_Interactingindex) * Actor_Interactingindex_Multiplier;
   SmartFreeObject(SmartCurrentTarget, Local);
   Temp := R_GetTNPC(InteractingIndex);

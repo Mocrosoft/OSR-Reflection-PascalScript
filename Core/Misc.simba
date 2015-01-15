@@ -655,7 +655,7 @@ function R_GetPlayerName: String;
 var
   _Player, _PlayerName: Integer;
 begin
-  _Player := SmartGetFieldObject(SmartCurrentTarget, 0, Client_GetLocalPlayer);
+  _Player := SmartGetFieldObject(SmartCurrentTarget, 0, Client_LocalPlayer);
   _PlayerName := SmartGetFieldObject(SmartCurrentTarget, _Player, Player_name);
   Result := R_GetJavaString(_PlayerName, 512);
   SmartFreeObject(SmartCurrentTarget, _PlayerName);
@@ -701,7 +701,7 @@ function R_GetActorLoopCycle: integer;
 var
   Me: Integer;
 begin
-  Me := SmartGetFieldObject(SmartCurrentTarget, 0, Client_GetLocalPlayer);
+  Me := SmartGetFieldObject(SmartCurrentTarget, 0, Client_LocalPlayer);
   result :=  SmartGetFieldInt(SmartCurrentTarget, me, Actor_combatCycle) * Actor_combatCycle_Multiplier;
   SmartFreeObject(SmartCurrentTarget, Me);
 end;

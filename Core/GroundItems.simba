@@ -49,7 +49,7 @@ var
 begin
   BaseX := SmartGetFieldInt(SmartCurrentTarget, 0, client_baseX) * client_baseX_Multiplier;
   BaseY := SmartGetFieldInt(SmartCurrentTarget, 0, client_baseY) * client_baseY_Multiplier;
-  Plane := SmartGetFieldInt(SmartCurrentTarget, 0, client_getplane) * client_getplane_Multiplier;
+  Plane := SmartGetFieldInt(SmartCurrentTarget, 0, client_plane) * client_plane_Multiplier;
   _Nodes := SmartGetFieldArray3DObject(SmartCurrentTarget, 0, client_groundItems, Plane, Tile.X - BaseX, Tile.Y - BaseY);
   _Head := SmartGetFieldObject(SmartCurrentTarget, _Nodes, LinkedList_head);
   _Next := SmartGetFieldObject(SmartCurrentTarget, _Head, Node_next);
@@ -94,7 +94,7 @@ var
 begin
   BaseX := SmartGetFieldInt(SmartCurrentTarget, 0, client_baseX) * client_baseX_Multiplier;
   BaseY := SmartGetFieldInt(SmartCurrentTarget, 0, client_baseY) * client_baseY_Multiplier;
-  Plane := SmartGetFieldInt(SmartCurrentTarget, 0, client_getplane) * client_getplane_Multiplier;
+  Plane := SmartGetFieldInt(SmartCurrentTarget, 0, client_plane) * client_plane_Multiplier;
   for X := 0 to 104 do begin
     for Y := 0 to 104 do begin
       SetLength(TempArray, 0);
@@ -134,7 +134,7 @@ var
 begin
   BaseX := SmartGetFieldInt(SmartCurrentTarget, 0, client_baseX) * client_baseX_Multiplier;
   BaseY := SmartGetFieldInt(SmartCurrentTarget, 0, client_baseY) * client_baseY_Multiplier;
-  Plane := SmartGetFieldInt(SmartCurrentTarget, 0, client_getplane) * client_getplane_Multiplier;
+  Plane := SmartGetFieldInt(SmartCurrentTarget, 0, client_plane) * client_plane_Multiplier;
   Position := R_GetTileGlobal;
   Position := Point(Position.X - BaseX, Position.Y - BaseY);
   Distance := Round(Distance / 2);

@@ -64,7 +64,7 @@ var
   TheRegion, Tile, TheObjects, i, ID, basex, basey: integer;
   tileO:tpoint;
 begin
-  TheRegion := SmartGetFieldObject(SmartCurrentTarget, 0, Client_GetRegion);
+  TheRegion := SmartGetFieldObject(SmartCurrentTarget, 0, Client_Region);
   Tile := SmartGetFieldArray3DObject(SmartCurrentTarget, TheRegion, Region_sceneTiles, R_GetPlane, x, y);
   for i := 0 to 5 do
   begin
@@ -106,7 +106,7 @@ var
   TheRegion, Tile, TheObject, ID, Hash, BaseX, BaseY: integer;
   tileO:tpoint;
 begin
-  TheRegion := SmartGetFieldObject(SmartCurrentTarget, 0, Client_GetRegion);
+  TheRegion := SmartGetFieldObject(SmartCurrentTarget, 0, Client_Region);
   Tile := SmartGetFieldArray3DObject(SmartCurrentTarget, TheRegion, Region_sceneTiles, R_GetPlane, x, y);
   TheObject := SmartGetFieldObject(SmartCurrentTarget, Tile, SceneTile_WallDecoration);
   if(not (TheObject = 0)) then
@@ -145,7 +145,7 @@ var
   TheRegion, Tile, TheObject, ID, Hash, BaseX, BaseY: integer;
   tileO:tpoint;
 begin
-  TheRegion := SmartGetFieldObject(SmartCurrentTarget, 0, Client_GetRegion);
+  TheRegion := SmartGetFieldObject(SmartCurrentTarget, 0, Client_Region);
   Tile := SmartGetFieldArray3DObject(SmartCurrentTarget, TheRegion, Region_sceneTiles, R_GetPlane, x, y);
   TheObject := SmartGetFieldObject(SmartCurrentTarget, Tile, SceneTile_GroundDecoration);
   if(not (TheObject = 0)) then
@@ -184,7 +184,7 @@ var
   TheRegion, Tile, TheObject, ID, Hash, BaseX, BaseY: integer;
   tileO:tpoint;
 begin
-  TheRegion := SmartGetFieldObject(SmartCurrentTarget, 0, client_getregion);
+  TheRegion := SmartGetFieldObject(SmartCurrentTarget, 0, client_region);
   Tile := SmartGetFieldArray3DObject(SmartCurrentTarget, TheRegion, Region_sceneTiles,R_GetPlane, x, y);
   TheObject := SmartGetFieldObject(SmartCurrentTarget, Tile, SceneTile_BoundaryObject);
   if(not (TheObject = 0)) then

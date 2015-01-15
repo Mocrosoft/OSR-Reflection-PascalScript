@@ -289,7 +289,7 @@ function R_GetTileGlobal: TPoint;
 var
   Me: Integer;
 begin
-  Me := SmartGetFieldObject(SmartCurrentTarget, 0, Client_GetLocalPlayer);
+  Me := SmartGetFieldObject(SmartCurrentTarget, 0, Client_LocalPlayer);
   Result.X := (SmartGetFieldInt(SmartCurrentTarget, 0, client_baseX) * client_baseX_Multiplier) + (SmartGetFieldInt(SmartCurrentTarget, Me, Actor_WorldX) * Actor_WorldX_Multiplier) div 128;
   Result.Y := (SmartGetFieldInt(SmartCurrentTarget, 0, client_baseY) * client_baseY_Multiplier) + (SmartGetFieldInt(SmartCurrentTarget, Me, Actor_WorldY) * Actor_WorldY_Multiplier) div 128;
   SmartFreeObject(SmartCurrentTarget, Me);
@@ -502,7 +502,7 @@ begin
     result := 0;
     exit;
   end;
-  CurPlane := SmartGetFieldInt(SmartCurrentTarget, 0, Client_GetPlane) * Client_GetPlane_Multiplier;
+  CurPlane := SmartGetFieldInt(SmartCurrentTarget, 0, Client_Plane) * Client_Plane_Multiplier;
   GroundSetting := SmartGetFieldArray3DByte(SmartCurrentTarget, 0, Client_TileSettings, 1, X, Y);
   if ((CurPlane < 3) and ((GroundSetting and 2) <> 0)) then
     CurPlane := CurPlane + 1;

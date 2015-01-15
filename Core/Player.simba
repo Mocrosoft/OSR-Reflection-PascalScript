@@ -18,7 +18,7 @@ function R_GetAnimation: Integer;
 var
   Me: Integer;
 begin
-  Me := SmartGetFieldObject(SmartCurrentTarget, 0, Client_GetLocalPlayer);
+  Me := SmartGetFieldObject(SmartCurrentTarget, 0, Client_LocalPlayer);
   Result := SmartGetFieldInt(SmartCurrentTarget, me, Actor_animation)  * Actor_animation_Multiplier;
   SmartFreeObject(SmartCurrentTarget, Me);
 end;
@@ -407,7 +407,7 @@ Lumbridge cellar. Each floor up adds 1 onto the default ground-level (0).
 *)
 function R_GetPlane: Integer;
 begin
-  Result := (SmartGetFieldInt(SmartCurrentTarget, 0, Client_GetPlane) * Client_GetPlane_Multiplier);
+  Result := (SmartGetFieldInt(SmartCurrentTarget, 0, Client_Plane) * Client_Plane_Multiplier);
 end;
 
 (*
