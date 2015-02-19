@@ -90,7 +90,7 @@ begin
     until TimeFromMark(f) > 30000;
     if R_NearTile(R_TalkStartLoc, 20) then
     begin
-      Result := True
+      Result := True;
       exit;
     end;
   end;

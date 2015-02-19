@@ -96,7 +96,7 @@ begin
     OldFileName := includePath + 'SRL-OSR\SRL\' + Multi[i];
     if FileExists(OldFileName) then
     begin
-      DeleteFile(OldFileName)
+      DeleteFile(OldFileName);
       Writeln('Removed file '+Multi[i]);
     end;
   end;
